@@ -1,0 +1,51 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+using namespace std;
+class book {
+private:
+  string author;
+  string name;
+  double pages;
+public:
+  book(const string& m, const string& k, double s) : author(m), name(k), pages(s) {}
+  string Author() {
+    return author;
+  }
+  string Name() {
+    return name;
+  }
+  double Pages() {
+    return pages;
+  }
+  bool Sort(double a) const {
+    if (pages > a) {
+      return 1;
+    }
+    else {
+      return 0;
+    }
+  }
+  void print() const {
+    cout << "Author: " << author << ", Name: " << name << ", Pages: " << pages << endl;
+  }
+};
+int main()
+{
+  double a=0, s=0;
+  vector <book> Book = {
+    book("A","a",100),
+    book("B","b",200),
+    book("C","c",300)
+  };
+  
+  for (int i = 0; i < 3; ++i) {
+    if (Book[i].Sort(a)) {
+      a = Book[i].Pages();
+      s = i;
+
+    }
+  }
+  Book[s].print();
+}
